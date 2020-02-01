@@ -1,0 +1,57 @@
+Task0.py
+
+"""
+Complexity :  There is no while loop . 
+Please note that reading the  data from csv file is not being considered  . 
+To get the first and last record it takes constant time . 
+So the below code's Time complexity is  O(1). Space complexity is O(n) 
+"""
+
+Task1.py
+"""
+Complexity :  As there is are two  while loop is  each of O(n). 
+
+Adding elements to Set is  O(1) . 
+Finding the number of records in texts or calls or Set is O(1) . 
+While creating the  Set, the number of elements present are tracked . 
+So in constant time the  length can be printed . 
+Worst case complexity of the below code is  O(n)
+Space Complexity is  ie O(n) 
+"""
+
+
+Task2.py
+"""
+Complexity :  Time Complexity for executing While loop is  O(n).
+Adding elements to to dictionary is  O(1) .
+Union of two set is O(n)
+Getting the max value  from the dictionary values is O(n)
+Worst case complexity of the below code is  O(n)
+Space Complexity is O(n)
+"""
+
+Task3.py
+"""
+Complexity : Time complexity of  While loop is  O(n) .
+Within the While loop we are doing a regular expression Match.
+The complexity depends on the length of the string In this case
+the  Telephone numbers are limited to 10 to 12 characters. 
+In this particular case it can be assumed to be constant as the inputs are of fixed length.
+say O(K) where K is constant 
+
+Adding elements to Set is  O(1). Union of two set is O(n)
+Sorting the list is O(nlogn)
+Worst case complexity of the below code is  O(nlogn)
+Space Complexity is O(n)
+Over time complexity is  O(n).
+"""
+
+
+Task4.py
+"""
+Complexity :  Time complexity for executing While loop is  O(n).
+Adding elements to Set is  O(1) . Union of two set is O(n)
+Sorting the list is O(nlogn)
+Worst case complexity of the below code is  O(nlogn)
+Space Complexity is O(n)
+"""
