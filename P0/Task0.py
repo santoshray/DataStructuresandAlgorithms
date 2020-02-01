@@ -37,8 +37,10 @@ To get the first and last record it takes constant time .
 So the below code's Time complexity is  O(1). Space complexity is O(1) 
 """
 
-incoming_number = texts[0][0]
-print("First record of texts, %s texts %s at time %s"%(texts[0][0],texts[0][1],texts[0][2]))
 
-lcr_idx = len(calls) - 1
-print("Last record of calls, %s calls %s at time %s, lasting %s seconds"%(calls[lcr_idx][0],calls[lcr_idx][1],calls[lcr_idx][2],calls[lcr_idx][3]))
+#print("First record of texts, %s texts %s at time %s"%(texts[0][0],texts[0][1],texts[0][2]))
+print('First record of texts, {0} texts {1} at time {2}'.format(*texts[0]))
+
+#lcr_idx = len(calls) - 1
+#print("Last record of calls, %s calls %s at time %s, lasting %s seconds"%(calls[lcr_idx][0],calls[lcr_idx][1],calls[lcr_idx][2],calls[lcr_idx][3]))
+print('Last record of calls, {0} calls {1} at time {2}, lasting {3} seconds'.format(*calls[-1]))
