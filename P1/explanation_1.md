@@ -1,4 +1,4 @@
-# P1 : LRU Cache 
+# Problem 1 : LRU Cache 
 LRUcache is  class . It implements two data structures . 
 * Double linked list  . Double linked list is used so that the removing a reference to a node can be done  in O(1) time and adding to the beginning of the list also can be done in O(1) time 
 * Dictionary .  It stores key and the value as the reference to the node whose value corresponds to the key . Finding the value of corresponding  key takes O(1) time . 

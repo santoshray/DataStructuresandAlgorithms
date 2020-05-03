@@ -1,4 +1,4 @@
-#P3 Huffman Coding
+# Problem 3: Huffman Coding
 
 Huffman coding implements two user functions  
 1. huffman_encoding(data) : it takes the sentence to be encoded and returns the huffman tree and the encoded data as a string of bytes. 
