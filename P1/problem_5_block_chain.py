@@ -11,7 +11,8 @@ class Block:
 
 	def calc_hash(self):
 		sha = hashlib.sha256()
-		hash_str = self.data.encode('utf-8')
+		#hash should be generated using the datetime stamp otherwise it will not be unique
+		hash_str = self.timestamp.encode('utf-8') + str(self.data).encode('utf-8')
 		sha.update(hash_str)
 
 		return sha.hexdigest()
@@ -26,17 +27,17 @@ class Block:
 		return self.hash
 
 	def __repr__(self):
-		return str({'data':self.data,'prev_hash':self.previous_hash,
-				'hash':self.hash,'timestamp':self.timestamp})
-
+		return str("TimeStamp: {}\nData: {}\nHash: {}\nPrevious Hash: {}".
+			format(self.timestamp,self.data,self.hash,self.previous_hash))
 
 class BlockNode:
-    def __init__(self, data):
-    	#The below statement to get the GMT time stamp is  googled from the internet 
-       	timestamp = time.strftime("%a, %d %b %Y %I:%M:%S %p %Z", time.gmtime())
-        self.block = Block(timestamp,data,None)
-        self.next = None
-
+	def __init__(self, data):
+		#The below statement to get the time stamp in the format mentioned in review comment 
+		lt = time.localtime()
+		#timestamp format 2020-04-02 05:18:22
+		timestamp = time.strftime("%y-%m-%d %I:%M:%S ", time.localtime())
+		self.block = Block(timestamp,data,None)
+		self.next = None
 
 
 class BlockChain:
@@ -47,10 +48,10 @@ class BlockChain:
 		cur_node = self.head
 		i = 0
 		while cur_node:
-			print("-----Block Chain Node{}-----".format(i))
-			print(cur_node.block)
+			print("{} \n".format(cur_node.block))
 			cur_node = cur_node.next
 			i+=1
+
 
 
 	def append(self, value):
@@ -80,7 +81,13 @@ class BlockChain:
 if __name__ == '__main__':
 
 	bc = BlockChain()
+	print("---Test 1 --- ")
+	data_l = []
+	for data in data_l:
+		bc.append(data)
+	bc.display()
 
+	print("---Test 2---")
 	data_l = ["What is the weather",
 			  "Hi Udacity",
 			  "Thanks for Preparing the program",
@@ -95,6 +102,18 @@ if __name__ == '__main__':
 	bc.display()
 
 
+	print("---Test 3 --- ")
+	data_l = [["Hello","World"] , {"Student":"santosh","ID":11}]
+	for data in data_l:
+		bc.append(data)
+	bc.display()
+
+
+	print("---Test 4 --- ")
+	data_l = [[1,4,67675675] , (1,4,5,6),(45,67,7,'Santosh')]
+	for data in data_l:
+		bc.append(data)
+	bc.display()
 
 
 
