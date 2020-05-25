@@ -27,6 +27,7 @@ def  calulate_frequency(string):
 			d[ch]+=1
 		except:
 			d[ch] =1
+
 	return d 
 
 
@@ -39,6 +40,10 @@ def create_parent_node(left_node,right_node):
 
 def create_huffman_tree(ch_dict):
 	#convert  dict to  list 
+
+	if len(ch_dict) == 0:
+		return HuffmanTree(None)
+
 	ch_list = []
 	for key in ch_dict.keys():
 		ch_list.append(TreeNode(key,ch_dict[key]))
@@ -62,13 +67,18 @@ def create_huffman_tree(ch_dict):
 				temp_ch_list.append(node)
 		ch_list = temp_ch_list
 
+	root_node = ch_list.pop()
 
-	huffman_tree  = HuffmanTree(ch_list.pop()) 
+	huffman_tree  = HuffmanTree(root_node) 
 	
 	return 	huffman_tree
 
 def get_code_for_character(ch,huffman_tree):
 	node  = huffman_tree.root
+	#if there is only one root then then return code "1"
+	if node.ch == ch:
+		return "1"
+
 	code = ""
 	while(node.ch != ch):
 		if node.left.ch.find(ch) >=0:
@@ -83,6 +93,9 @@ def get_code_for_character(ch,huffman_tree):
 def get_code_dict(huffman_tree):
 	code_dict = dict()
 	#print("characters:{}".format(huffman_tree.root.ch))
+	if huffman_tree.root == None:
+		return code_dict
+
 	for ch in huffman_tree.root.ch:
 		code = get_code_for_character(ch,huffman_tree)
 		code_dict[ch] = code
@@ -137,17 +150,109 @@ def huffman_decoding(data,tree):
 
 if __name__ == "__main__":
 
-    a_great_sentence = "The bird is the word"
+	print("---Test Case 1 ---")
 
-    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-    print ("The content of the data is: {}\n".format(a_great_sentence))
+	a_great_sentence = "The bird is the word"
 
-    encoded_data, tree = huffman_encoding(a_great_sentence)
+	print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+	print ("The content of the data is: {}\n".format(a_great_sentence))
 
-    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
+	encoded_data, tree = huffman_encoding(a_great_sentence)
 
-    decoded_data = huffman_decoding(encoded_data, tree)
+	print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+	print ("The content of the encoded data is: {}\n".format(encoded_data))
 
-    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    print ("The content of the decoded data is: {}\n".format(decoded_data))	
+	decoded_data = huffman_decoding(encoded_data, tree)
+
+	print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+	print ("The content of the decoded data is: {}\n".format(decoded_data))	
+
+	print("---Test Case 2 ---")
+
+	a_great_sentence = ""
+
+
+	print ("The size of the data is: {}\n".format(0))
+	print ("The content of the data is: {}\n".format(a_great_sentence))
+
+	encoded_data, tree = huffman_encoding(a_great_sentence)
+	if len(encoded_data) == 0:
+		encoded_data_size = 0
+	print ("The size of the encoded data is: {}\n".format(str(encoded_data_size)))
+	print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+	decoded_data = huffman_decoding(encoded_data, tree)
+
+	print ("The size of the decoded data is: {}\n".format(0))
+	print ("The content of the decoded data is: {}\n".format(decoded_data))	
+
+	print("---Test Case 3 ---")
+
+	a_great_sentence = "aaa"
+
+
+	print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+	print ("The content of the data is: {}\n".format(a_great_sentence))
+
+	encoded_data, tree = huffman_encoding(a_great_sentence)
+	print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+	print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+	decoded_data = huffman_decoding(encoded_data, tree)
+
+	print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+	print ("The content of the decoded data is: {}\n".format(decoded_data))	
+
+
+	print("---Test Case 4 ---")
+
+	a_great_sentence = "ab"
+
+
+	print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+	print ("The content of the data is: {}\n".format(a_great_sentence))
+
+	encoded_data, tree = huffman_encoding(a_great_sentence)
+	print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+	print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+	decoded_data = huffman_decoding(encoded_data, tree)
+
+	print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+	print ("The content of the decoded data is: {}\n".format(decoded_data))	
+
+	print("---Test Case 5 ---")
+
+	a_great_sentence = "aaaaab ccccccc b"
+
+
+	print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+	print ("The content of the data is: {}\n".format(a_great_sentence))
+
+	encoded_data, tree = huffman_encoding(a_great_sentence)
+	print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+	print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+	decoded_data = huffman_decoding(encoded_data, tree)
+
+	print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+	print ("The content of the decoded data is: {}\n".format(decoded_data))	
+
+	print("---Test Case 6 ---")
+
+	a_great_sentence = "These are more common ways to say “How are you?”—which, by the way, is really not used that often! You can find more ways to say hello in this blog post."
+
+
+	print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+	print ("The content of the data is: {}\n".format(a_great_sentence))
+
+	encoded_data, tree = huffman_encoding(a_great_sentence)
+	print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+	print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+	decoded_data = huffman_decoding(encoded_data, tree)
+
+	print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+	print ("The content of the decoded data is: {}\n".format(decoded_data))	
+
+
