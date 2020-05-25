@@ -99,6 +99,8 @@ def intersection(llist_1, llist_2):
 
 if __name__ == '__main__':
 
+
+    print("---Test case 1---")
     linked_list_1 = LinkedList()
     linked_list_2 = LinkedList()
 
@@ -114,96 +116,130 @@ if __name__ == '__main__':
     linked_list_1.linked_list_to_dict()
     linked_list_2.linked_list_to_dict()
 
-    print (union(linked_list_1,linked_list_2))
-    print (intersection(linked_list_1,linked_list_2))
+    print("list 1 : {}".format(linked_list_1))
+    print("list 2 : {}".format(linked_list_2))
+    print ("Union : {}".format(union(linked_list_1,linked_list_2)))
+    print ("Intersection : {}".format(intersection(linked_list_1,linked_list_2)))
 
-    # Test case 2
+    print("\n---Test case 2---")
 
-    linked_list_3 = LinkedList()
-    linked_list_4 = LinkedList()
+    linked_list_1 = LinkedList()
+    linked_list_2 = LinkedList()
 
-    element_1 = [3,2,4,35,6,65,6,4,3,23]
-    element_2 = [1,7,8,9,11,21,1]
+    element_1 = ['f','b','e','h']
+    element_2 = ['z','x','z','y']
 
     for i in element_1:
-        linked_list_3.append(i)
+        linked_list_1.append(i)
 
     for i in element_2:
-        linked_list_4.append(i)
+        linked_list_2.append(i)
 
 
-    print (union(linked_list_3,linked_list_4))
-    print (intersection(linked_list_3,linked_list_4))
+    print("list 1 : {}".format(linked_list_1))
+    print("list 2 : {}".format(linked_list_2))
+    print ("Union : {}".format(union(linked_list_1,linked_list_2)))
+    print ("Intersection : {}".format(intersection(linked_list_1,linked_list_2)))
 
-    # Test case 3
+    print("\n---Test case 3---")
 
-    linked_list_3 = LinkedList()
-    linked_list_4 = LinkedList()
+    linked_list_1 = LinkedList()
+    linked_list_2 = LinkedList()
 
     element_1 = []
     element_2 = [1]
 
     for i in element_1:
-        linked_list_3.append(i)
+        linked_list_1.append(i)
 
     for i in element_2:
-        linked_list_4.append(i)
+        linked_list_2.append(i)
 
 
-    print (union(linked_list_3,linked_list_4))
-    print (intersection(linked_list_3,linked_list_4))
+    print("list 1 : {}".format(linked_list_1))
+    print("list 2 : {}".format(linked_list_2))
+    print ("Union : {}".format(union(linked_list_1,linked_list_2)))
+    print ("Intersection : {}".format(intersection(linked_list_1,linked_list_2)))
 
-    # Test case 4
 
-    linked_list_3 = LinkedList()
-    linked_list_4 = LinkedList()
+    print("---Test case 4---")
+
+    linked_list_1 = LinkedList()
+    linked_list_2 = LinkedList()
 
     element_1 = []
     element_2 = []
 
     for i in element_1:
-        linked_list_3.append(i)
+        linked_list_1.append(i)
 
     for i in element_2:
-        linked_list_4.append(i)
+        linked_list_2.append(i)
 
 
-    print (union(linked_list_3,linked_list_4))
-    print (intersection(linked_list_3,linked_list_4))
+    print("list 1 : {}".format(linked_list_1))
+    print("list 2 : {}".format(linked_list_2))
+    print ("Union : {}".format(union(linked_list_1,linked_list_2)))
+    print ("Intersection : {}".format(intersection(linked_list_1,linked_list_2)))
 
+
+    print("\n---Test case 5 ---")
     # Test case 5  ( disjoint sets)
 
-    linked_list_3 = LinkedList()
-    linked_list_4 = LinkedList()
+    linked_list_1 = LinkedList()
+    linked_list_2 = LinkedList()
 
     element_1 = [1,1,4,5,6]
     element_2 = [2,3,7,8,7]
 
     for i in element_1:
-        linked_list_3.append(i)
+        linked_list_1.append(i)
 
     for i in element_2:
-        linked_list_4.append(i)
+        linked_list_1.append(i)
 
-    print (union(linked_list_3,linked_list_4))
-    print (intersection(linked_list_3,linked_list_4))
+    print("list 1 : {}".format(linked_list_1))
+    print("list 2 : {}".format(linked_list_2))
+    print ("Union : {}".format(union(linked_list_1,linked_list_2)))
+    print ("Intersection : {}".format(intersection(linked_list_1,linked_list_2)))
 
-
+    print("\n---Test case 6---")
     # Test case 6  ( equal sets)
 
-    linked_list_3 = LinkedList()
-    linked_list_4 = LinkedList()
+    linked_list_1 = LinkedList()
+    linked_list_2 = LinkedList()
 
     element_1 = [1,1,4,5,6]
     element_2 = [1,1,4,5,6]
 
     for i in element_1:
-        linked_list_3.append(i)
+        linked_list_1.append(i)
 
     for i in element_2:
-        linked_list_4.append(i)
+        linked_list_2.append(i)
 
 
-    print (union(linked_list_3,linked_list_4))
-    print (intersection(linked_list_3,linked_list_4))
+    print("list 1 : {}".format(linked_list_1))
+    print("list 2 : {}".format(linked_list_2))
+    print ("Union : {}".format(union(linked_list_1,linked_list_2)))
+    print ("Intersection : {}".format(intersection(linked_list_1,linked_list_2)))
 
+    print("\n---Test case 7---")
+
+    linked_list_1 = LinkedList()
+    linked_list_2 = LinkedList()
+
+    element_1 = ['apple','mango','bananna','stawberry']
+    element_2 = ['apple','carrot','tomato','potato']
+
+    for i in element_1:
+        linked_list_1.append(i)
+
+    for i in element_2:
+        linked_list_2.append(i)
+
+
+    print("list 1 : {}".format(linked_list_1))
+    print("list 2 : {}".format(linked_list_2))
+    print ("Union : {}".format(union(linked_list_1,linked_list_2)))
+    print ("Intersection : {}".format(intersection(linked_list_1,linked_list_2)))
