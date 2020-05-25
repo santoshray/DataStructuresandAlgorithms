@@ -35,31 +35,28 @@ class DoubleLinkedList:
 
 	def display_items(self):
 		cur_node = self.head
-		#print("\nList from head  to tail")
+		print("\nList from Head  to Tail")
 		s =""
 		while(cur_node!=None):
 			s+=str(cur_node.data)+"->"
 			cur_node = cur_node.next
 
-		#print(s)
+		print(s)
 
 		cur_node = self.tail
-		#print("\nList from tai  to head")
+		print("\nList from Tail to Head")
 
 		s =""
 		while(cur_node!=None):
 			s+=str(cur_node.data)+"->"
 			cur_node = cur_node.prev
 
-		#print(s)
-
-
+		print(s)
 		return
 
 
 	def remove_node(self,node):
 		if self.head == None :
-			print("\nThe Double linked list is empty")
 			return None
 
 		#if there is only one node 
@@ -69,14 +66,12 @@ class DoubleLinkedList:
 			return node
 
 		#if the node in the head of the double linked list 
-		#print("\nhead:{} : node:{}".format(self.head,node))
 		if self.head == node:
 			self.head.next.prev =None
 			self.head = self.head.next
 			return node
 
 		#if node is the tail of the double linked list  
-		#print("\ntail:{} : node:{}".format(self.tail,node))
 		if self.tail == node:
 			self.tail.prev.next = None
 			self.tail = self.tail.prev
@@ -84,7 +79,6 @@ class DoubleLinkedList:
 
 		#if node is in any other position of double linked list 
 
-		#print("\nnode.next :{} , node.prev:{}".format(node.next,node.prev))
 		node.prev.next = node.next
 		node.next.prev = node.prev 
 		return node
@@ -116,16 +110,14 @@ class LRUcache:
 		#if present  
 		#Remove the data and add at beginning of the linked list
 		#return the value corresponding to the key
-		#print("\nget is called key={} ".format(key))
 		if self.size < 0:
 			return -1
 		if key in self.cache :
 			node  =  self.cache[key]
-			#print(node.data)
 			key,value = node.data
-			self.dlist.display_items()
+			
+			#self.dlist.display_items()
 			self.dlist.remove_node(node)
-			#print("\nkey= {},value={}".format(key,value))
 			self.dlist.add_at_beginning(None,node)
 
 			return value
@@ -141,15 +133,12 @@ class LRUcache:
 			return
 
 		if  len(self.cache) < self.size:
-			#Add to dict and also add at beginning of the double linked list 
 			self.cache[key] = self.dlist.add_at_beginning((key,value),None)
-			#print("\ncache_size = {}".format(len(self.cache)))
 		else:
 			#cache is full  remove the LRU 
 			node = self.dlist.remove_from_tail()
 			if node:
 				k,v = node.data 
-				#print(k,v)
 				self.cache.pop(k)
 
 				self.cache[key] = self.dlist.add_at_beginning((key,value),None)
