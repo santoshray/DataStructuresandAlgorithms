@@ -1,56 +1,51 @@
 
 def sort_012(a):
-	p0=0
-	p2=len(a)-1
+
+	#position_0 - variable that points to the index in array a where  for all i, 0<i<position_0 a[i] = 0  
+	#position_2 - variable that points to the index in array a where  for all i, position_2<i<len(a) a[i] = 2  
+	a_len = len(a)
+	if (a_len == 0 ):
+		return []
+
+	position_0=0
+	position_2=a_len-1
 	i =0 
 
-	while ( a[p2] ==2):
-		p2 -=1
+	while ( a[position_2] ==2):
+		position_2 -=1
 
-	print("p2=",p2)
 
-	while (a[p0]==0):
-		p0+=1
-	print("p0=",p0)
+	while (a[position_0]==0):
+		position_0+=1
 
-	i =p0
-	while(i <= p2 ):
+	i =position_0
+	while(i <= position_2 ):
 
-		print("At beginning i={},p2={},p0={}".format(i,p2,p0))
 		if(a[i] ==0):
-			print("Inside 02 found 0 at i =".format(i))
-			swap(a,i,p0)
-			print(a)
-			while(a[p0] == 0):
-				p0+=1
+			swap(a,i,position_0)
+			while(a[position_0] == 0):
+				position_0+=1
 
 			if(a[i] ==2):
-				print("Inside 02 found 2 at i =".format(i))
-				swap(a,i,p2)
+				swap(a,i,position_2)
 				print(a)
-				while(a[p2] == 2):
-					p2-=1
+				while(a[position_2] == 2):
+					position_2-=1
 
 		if(a[i] ==2):
-			print("Inside 20 found 2 at i ={}".format(i))
-			swap(a,i,p2)
-			print(a)
-			while(a[p2] == 2):
-				p2-=1
+			swap(a,i,position_2)
+			while(a[position_2] == 2):
+				position_2-=1
 
 			if(a[i] ==0):
-				print("Inside 20 found 0 at i ={}".format(i))
-				swap(a,i,p0)
-				print(a)
-				while(a[p0] == 0):
-					p0+=1
+				swap(a,i,position_0)
+				while(a[position_0] == 0):
+					position_0+=1
 
 
 		i+=1
-		print("At end i={},p2={},p0={}".format(i,p2,p0))
 
 
-	print (a)
 
 def swap(a , i,j):
 	t =a[i]
@@ -58,8 +53,48 @@ def swap(a , i,j):
 	a[j] = t 
 
 if __name__ == '__main__':
-	a=[0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2]
-	print("original list = {}".format(a))
-	sort_012(a)
 
-	print(a)
+	print("\n---Test Case 1---")
+	a=[0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2]
+	print("original list a : {}".format(a))
+	sort_012(a)
+	print("after sort012(a) :{}".format(a))
+
+
+	print("\n---Test Case 2---")
+	a=[]
+	print("original list a : {}".format(a))
+	sort_012(a)
+	print("after sort012(a) :{}".format(a))
+
+	print("\n---Test Case 3---")
+	a=[1,1,1,1,2,2,2,0]
+	print("original list a : {}".format(a))
+	sort_012(a)
+	print("after sort012(a) :{}".format(a))
+
+	print("\n---Test Case 4---")
+	a=[0,0,0,2,2,2]
+	print("original list a : {}".format(a))
+	sort_012(a)
+	print("after sort012(a) :{}".format(a))
+
+	print("\n---Test Case 5---")
+	a=[0,1,0,1,]
+	print("original list a : {}".format(a))
+	sort_012(a)
+	print("after sort012(a) :{}".format(a))
+
+
+	print("\n---Test Case 6---")
+	a=[1,1]
+	print("original list a : {}".format(a))
+	sort_012(a)
+	print("after sort012(a) :{}".format(a))
+
+
+	print("\n---Test Case 6---")
+	a=[1,1]
+	print("original list a : {}".format(a))
+	sort_012(a)
+	print("after sort012(a) :{}".format(a))
