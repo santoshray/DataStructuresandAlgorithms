@@ -53,15 +53,10 @@ class heap:
 			return
 		self.a[last_index] = num 
 		p_idx = self.parent_index(last_index)
-		#print("last_index =%d, p_idx =%d"%(last_index,p_idx))
-		#print("p_idx :a[%d] = %d , l_idx a[%d]=%d"%(p_idx,self.a[p_idx],last_index,self.a[last_index]))
 		while p_idx >=0  and self.a[last_index] < self.a[p_idx] :
-			#print("Before swap:a[%d] = %d ,  a[%d]=%d"%(p_idx,self.a[p_idx],last_index,self.a[last_index]))
 			self.swap (self.a,p_idx,last_index )
-			#print("After swap: a[%d] = %d ,  a[%d]=%d"%(p_idx,self.a[p_idx],last_index,self.a[last_index]))
 			last_index = p_idx
 			p_idx = self.parent_index(last_index)
-			#print(p_idx)
 
 
 	def heapify_down(self):
