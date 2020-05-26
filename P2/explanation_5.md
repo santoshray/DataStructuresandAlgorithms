@@ -1,16 +1,15 @@
-Problem 5 : Auto-complete using TRIE
+# Problem 5 : Auto-complete using TRIE
+
+**Design decision and  Data structure**
+The problem is given to be solved with TRIE data stucture to store  n words  of varied word length the max may be of length m .
 
  **Time complexity** : 
 
- Insert a word : O(n) where n is the length of the word. 
+ Insert a word :To insert a word of length of m the time complexity is O(m) where m is the length of the word. To create  the  trie data structure to store n words the time complexity is O(m+n)
 
- Find a word : O(n) where n in the length of the word to be searched
+ Find a word of length m: O(m) 
 
-Find the list of words with prefix:O(n) where n in the number of nodes in the Trie data structure matching the Prefix 
+Find the list of words with prefix:Time complexity is O(m+n) where n in the number of words that match with prefix with length m.
 
  **Space complexity** :
- Insert a word : O(n) where n is the number of Trie nodes required to represent the word  
-
-There is some optimization achieved when there is overlap in words being added .
-
-Find words : O(n) where n in the number of nodes in the Trie data structure .
+ To maintain the Trie structure where we are storing the information for n words with worst case length m the space complexity is  O(n*m)
