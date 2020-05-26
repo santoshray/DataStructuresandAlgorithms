@@ -14,9 +14,7 @@ class TrieNode:
         matches = []
         if self.is_word:
             matches += [prefix]
-            print(matches ,prefix)
         for (char, node) in self.children.items():
-            print(char , prefix)
             matches += node.find_words(prefix+ char)
 
         return matches
@@ -61,33 +59,34 @@ class Trie:
         return current_node
 
 
-
     def get_words(self,trie_node,prefix):
         matches = []
+
+        if trie_node == None:
+            return matches
+
         if trie_node.is_word:
             matches += [prefix]
-            print(matches ,prefix)
+            #print(matches ,prefix)
         for (char, node) in trie_node.children.items():
-            print(char , prefix)
+            #print(char , prefix)
             matches += self.get_words(node,prefix+ char)
 
         return matches
 
 
-
-
-
     def suffixes(self,prefix=''):
         
         cn = self.find (prefix)
-        print(prefix)
-        print(cn.children.items())
+        #print(prefix)
+        #print(cn.children.items())
 #        return cn.find_words('')
         return self.get_words(cn,'')
 
 
 if __name__ == '__main__':
 
+    print("\n---Test case 1---")
     MyTrie = Trie()
     wordList = [
         "ant", "anthology", "antagonist", "antonym", 
@@ -98,5 +97,47 @@ if __name__ == '__main__':
     for word in wordList:
         MyTrie.insert(word)
 
+    prefix ="f"
+    print("Word list:{}".format(wordList))
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))
+    prefix = "fu"
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))
+    prefix = ""
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))
 
-    print( MyTrie.suffixes("fu"))
+
+    print("\n---Test case 2---")
+    MyTrie = Trie()
+    wordList = [
+        "station", "country", "angry", "fraction", 
+        "action", "nation", "sorry", 
+        "lorry", "trigger", "sanitation", "dictation",
+        "multiplication", "addition"
+    ]
+
+    for word in wordList:
+        MyTrie.insert(word)
+
+    prefix =""
+    print("Word list:{}".format(wordList))
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))
+    prefix = "l"
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))
+    prefix = "s"
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))
+
+
+    print("\n---Test case 3---")
+    MyTrie = Trie()
+    wordList = []
+
+    for word in wordList:
+        MyTrie.insert(word)
+
+    prefix =""
+    print("Word list:{}".format(wordList))
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))
+    prefix = "a"
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))
+    prefix = "b"
+    print("prefix:{} , suffix list: {}".format(prefix, MyTrie.suffixes(prefix)))

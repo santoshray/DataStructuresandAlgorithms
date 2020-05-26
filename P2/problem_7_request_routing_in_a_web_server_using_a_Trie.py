@@ -86,22 +86,60 @@ class Router:
         # so it should be placed in a function here
         if (path =="/"):
         	path_part_list = ["/"]
+
         else :
-        	path_part_list = path.split('/')
+            if path[-1] == "/":
+                path = path[:-1]
+            path_part_list = path.split('/')
+
+
 
         return path_part_list
 
 if __name__ == '__main__':
-	# Here are some test cases and expected outputs you can use to test your implementation
+    # Here are some test cases and expected outputs you can use to test your implementation
+    print("\n---Test case 1---")
+    # create the router and add a route
+    router = Router("root handler", "not found handler") # remove the 'not found handler' if you did not implement this
+    router.add_handler("/home/about", "about handler")  # add a route
 
-	# create the router and add a route
-	router = Router("root handler", "not found handler") # remove the 'not found handler' if you did not implement this
-	router.add_handler("/home/about", "about handler")  # add a route
+    # some lookups with the expected output
+    print(router.lookup("/")) # should print 'root handler'
+    print(router.lookup("/home")) # should print 'not found handler' or None if you did not implement one
+    print(router.lookup("/home/about")) # should print 'about handler'
+    print(router.lookup("/home/about/")) # should print 'about handler' as the code handle trailing slashes
+    print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one        
 
-	# some lookups with the expected output
-	print(router.lookup("/")) # should print 'root handler'
-	print(router.lookup("/home")) # should print 'not found handler' or None if you did not implement one
-	print(router.lookup("/home/about")) # should print 'about handler'
-	print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
-	print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one        
+    print("\n---Test case 2---")
+    # create the router and add a route
+    router = Router("root handler")  # remove the 'not found handler' if you did not implement this
+    router.add_handler("/home/about", "about handler")  # add a route
+    router.add_handler("/home", "home page handler")  # add a route
+    router.add_handler("/contacts/customer_service", "Customer Service handler")  # add a route
+
+    # some lookups with the expected output
+    print(router.lookup("/")) # should print 'root handler'
+    print(router.lookup("/home")) # should print home page handler
+    print(router.lookup("/home/about")) # should print 'about handler'
+    print(router.lookup("/contacts/about/")) # should print '404 page not found'
+    print(router.lookup("/contacts/customer_service/")) # should print 'Customer Service handler'
+
+
+    print("\n---Test case 3---")
+    # create the router and add a route
+    router = Router("root handler")  # remove the 'not found handler' if you did not implement this
+
+    # some lookups with the expected output
+    print(router.lookup("/")) # should print 'root handler'
+    print(router.lookup("/home")) # # should print '404 page not found'
+    print(router.lookup("/home/about")) # should print '404 page not found'
+    print(router.lookup("/contacts/about/")) # should print '404 page not found'
+    print(router.lookup("/contacts/customer_service/")) # should print '404 page not found'
+
+    print("\n---Test case 4---")
+    # create the router and add a route
+    router = Router(None,None)  # remove the 'not found handler' if you did not implement this
+    # some lookups with the expected output
+    print(router.lookup("/")) # should print None
+    print(router.lookup("/home")) # should print None
 
