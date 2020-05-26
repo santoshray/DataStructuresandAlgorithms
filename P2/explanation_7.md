@@ -1,12 +1,11 @@
 # Problem 7 : Request routing in a web server using Trie
 
+**Design decision and  Data structure**
+The problem is given to be solved with TRIE data stucture to store  n urls with valid handlers of varied word length the max may be of length m 
 
 **Time Complexity** :
-Insert a path: O(n) where n is length of input path.   Adding to a dictionary has O(1) time.
-Find a path / subpath: O(m) where m is length of the list of path segments.
+Insert a url: O(m) where m is length of the url. path. Time complexity is O(m) to find the whether there is a valid handler for a url or not  . 
 
 **Space Complexity**: 
 
-Insert a path: O(n) where n is leghtn of the input path. 
-
-Find a path /subpath : O(n) where n is length of the input path.
+Space complexity to store n URL handlers  where m is the worst case length for the URL is  O(n*m)
